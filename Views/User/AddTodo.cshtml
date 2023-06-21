@@ -2,36 +2,40 @@
 
 <h2>Add Todo</h2>
 
+<!-- Add Todo form -->
 <form method="post" action="/User/AddTodoItem">
     <label for="todo">Todo Title:</label>
     <input type="text" name="todo" id="todo" required />
-
     <button type="submit">Add Todo</button>
 </form>
 
+<hr />
+
 <h2>Search Todo</h2>
 
-<form method="post" asp-controller="User" asp-action="SearchTodo">
+<!-- Search Todo form -->
+<form method="post" asp-action="SearchTodo">
     <label for="searchTerm">Search Term:</label>
     <input type="text" name="searchTerm" id="searchTerm" required />
-
     <button type="submit">Search</button>
 </form>
 
 <!-- Display search result message -->
-@if (!string.IsNullOrEmpty(ViewBag.SearchResult))
+@if (ViewBag.SearchResult != null)
 {
-    <label>@ViewBag.SearchResult</label>
+    <p>@ViewBag.SearchResult</p>
 }
 
 <hr />
 
+<!-- Clear Todos form -->
 <form method="post" action="/User/ClearTodos">
     <button type="submit">Clear All Todos</button>
 </form>
 
 <h2>My Todos</h2>
 
+<!-- Display Todos -->
 @if (Model != null && Model.Count > 0)
 {
     foreach (var todo in Model)
