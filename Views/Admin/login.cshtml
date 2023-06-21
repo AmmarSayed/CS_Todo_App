@@ -1,0 +1,22 @@
+<!-- Views/Admin/Login.cshtml -->
+
+@{
+    ViewData["Title"] = "Admin Login";
+}
+
+<h1>Admin Login</h1>
+
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+    <p>@ViewBag.ErrorMessage</p>
+}
+
+<form method="post" action="/Admin/Login">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username">
+    <br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password">
+    <br>
+    <input type="submit" value="Login">
+</form>

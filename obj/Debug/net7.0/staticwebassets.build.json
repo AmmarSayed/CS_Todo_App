@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "Hash": "P1nyH+IBUKQwt4YdlvN6Imd1N1HQLrGBLFhtyGztk5M=",
+  "Source": "TodoApp",
+  "BasePath": "_content/TodoApp",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "TodoApp/wwwroot",
+      "Source": "TodoApp",
+      "ContentRoot": "/Users/ammar/Documents/Programing/CS Diploma/CS641-Intro to programming/Project/TodoApp/wwwroot/",
+      "BasePath": "_content/TodoApp",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "/Users/ammar/Documents/Programing/CS Diploma/CS641-Intro to programming/Project/TodoApp/wwwroot/css/styles.css",
+      "SourceId": "TodoApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/ammar/Documents/Programing/CS Diploma/CS641-Intro to programming/Project/TodoApp/wwwroot/",
+      "BasePath": "_content/TodoApp",
+      "RelativePath": "css/styles.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/css/styles.css"
+    }
+  ]
+}

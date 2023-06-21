@@ -1,0 +1,20 @@
+@{
+    ViewData["Title"] = "User Login";
+}
+
+<h2>User Login</h2>
+
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+        <p>@ViewBag.ErrorMessage</p>
+}
+
+<form method="post" action="/User/Login">
+    <label for="username">Username:</label>
+    <input type="text" name="username" id="username" required />
+
+    <label for="password">Password:</label>
+    <input type="password" name="password" id="password" required />
+
+    <button type="submit">Login</button>
+</form>

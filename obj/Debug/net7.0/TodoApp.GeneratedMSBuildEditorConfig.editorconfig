@@ -1,0 +1,37 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = TodoApp
+build_property.RootNamespace = TodoApp
+build_property.ProjectDir = /Users/ammar/Documents/Programing/CS Diploma/CS641-Intro to programming/Project/TodoApp/
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = true
+build_property.MSBuildProjectDirectory = /Users/ammar/Documents/Programing/CS Diploma/CS641-Intro to programming/Project/TodoApp
+build_property._RazorSourceGeneratorDebug = 
+
+[/Users/ammar/Documents/Programing/CS Diploma/CS641-Intro to programming/Project/TodoApp/Views/Admin/AddUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vQWRkVXNlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ammar/Documents/Programing/CS Diploma/CS641-Intro to programming/Project/TodoApp/Views/Admin/login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vbG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ammar/Documents/Programing/CS Diploma/CS641-Intro to programming/Project/TodoApp/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ammar/Documents/Programing/CS Diploma/CS641-Intro to programming/Project/TodoApp/Views/User/AddTodo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXNlci9BZGRUb2RvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ammar/Documents/Programing/CS Diploma/CS641-Intro to programming/Project/TodoApp/Views/User/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXNlci9Mb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
