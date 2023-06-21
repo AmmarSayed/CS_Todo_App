@@ -10,6 +10,26 @@ namespace TodoApp.Controllers
     {
         private readonly string UserDataFilePath = Path.Combine("Data", "UserData.txt");
         private readonly string TodoDataFilePath = Path.Combine("Data", "TodoData.txt");
+        private List<string> GetTodos(string username)
+        {
+            List<string> todos = new List<string>();
+
+            using (StreamReader reader = new StreamReader(TodoDataFilePath, Encoding.UTF8))
+            {
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    string[] todoData = line.Split(':');
+                    if (todoData.Length >= 2 && todoData[0] == username)
+                    {
+                        string todo = string.Join(":", todoData.Skip(1));
+                        todos.Add(todo);
+                    }
+                }
+            }
+
+            return todos;
+        }
 
         public IActionResult Login()
         {
