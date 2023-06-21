@@ -1,30 +1,19 @@
-@model List<TodoApp.Models.Todo>
+<!-- Views/Admin/AddUser.cshtml -->
 
-<h2>Add Todo</h2>
+@model TodoApp.Models.User
 
-<form method="post" action="/User/AddTodoItem">
-    <label for="todo">Todo Title:</label>
-    <input type="text" name="todo" id="todo" required />
-
-    <button type="submit">Add Todo</button>
-</form>
-
-<h3>My Todos</h3>
-
-@if (Model.Count > 0)
-{
-    foreach (var todo in Model)
-    {
-        <p>@todo.Title</p>
-    }
-}
-else
-{
-    <p>No todos found.</p>
+@{
+    ViewData["Title"] = "Add User";
 }
 
-<hr />
+<h1>Add User</h1>
 
-<form method="post" action="/User/ClearTodos">
-    <button type="submit">Clear All Todos</button>
+<form method="post" action="/Admin/AddUser">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="Username" required>
+    <br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="Password" required>
+    <br>
+    <input type="submit" value="Add User">
 </form>
