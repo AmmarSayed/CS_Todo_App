@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -10,26 +11,6 @@ namespace TodoApp.Controllers
     {
         private readonly string UserDataFilePath = Path.Combine("Data", "UserData.txt");
         private readonly string TodoDataFilePath = Path.Combine("Data", "TodoData.txt");
-        private List<string> GetTodos(string username)
-        {
-            List<string> todos = new List<string>();
-
-            using (StreamReader reader = new StreamReader(TodoDataFilePath, Encoding.UTF8))
-            {
-                string line;
-                while ((line = reader.ReadLine()) != null)
-                {
-                    string[] todoData = line.Split(':');
-                    if (todoData.Length >= 2 && todoData[0] == username)
-                    {
-                        string todo = string.Join(":", todoData.Skip(1));
-                        todos.Add(todo);
-                    }
-                }
-            }
-
-            return todos;
-        }
 
         public IActionResult Login()
         {
@@ -62,22 +43,7 @@ namespace TodoApp.Controllers
                 return RedirectToAction("Login");
             }
 
-            List<string> todos = new List<string>();
-
-            using (StreamReader reader = new StreamReader(TodoDataFilePath, Encoding.UTF8))
-            {
-                string line;
-                while ((line = reader.ReadLine()) != null)
-                {
-                    string[] todoData = line.Split(':');
-                    if (todoData.Length >= 2 && todoData[0] == username)
-                    {
-                        string todo = string.Join(":", todoData.Skip(1));
-                        todos.Add(todo);
-                    }
-                }
-            }
-
+            List<string> todos = GetTodos(username);
             return View(todos);
         }
 
@@ -98,6 +64,47 @@ namespace TodoApp.Controllers
             }
 
             return RedirectToAction("AddTodo");
+        }
+
+        // search for a todo
+        [HttpPost]
+        public IActionResult SearchTodo(string searchTerm)
+        {
+            string username = HttpContext.Session.GetString("Username");
+            if (string.IsNullOrEmpty(username))
+            {
+                return RedirectToAction("Login");
+            }
+
+            bool todoExists = GetTodos(username).Any(todo => todo == searchTerm);
+
+            if (todoExists)
+            {
+                ViewBag.SearchResult = "Todo exists.";
+            }
+            else
+            {
+                ViewBag.SearchResult = "Todo does not exist.";
+            }
+
+            List<string> todos = GetTodos(username);
+            return View("AddTodo", todos);
+        }
+
+
+
+        // Display todos
+
+        public IActionResult DisplayTodos()
+        {
+            string username = HttpContext.Session.GetString("Username");
+            if (string.IsNullOrEmpty(username))
+            {
+                return RedirectToAction("Login");
+            }
+
+            List<string> todos = GetTodos(username);
+            return View(todos);
         }
 
         public IActionResult ClearTodos()
@@ -134,15 +141,9 @@ namespace TodoApp.Controllers
             return RedirectToAction("AddTodo");
         }
 
-        // Search for a todo 
-        [HttpPost]
-        public IActionResult SearchTodo(string searchTerm)
+        private List<string> GetTodos(string username)
         {
-            string username = HttpContext.Session.GetString("Username");
-            if (string.IsNullOrEmpty(username))
-            {
-                return RedirectToAction("Login");
-            }
+            List<string> todos = new List<string>();
 
             using (StreamReader reader = new StreamReader(TodoDataFilePath, Encoding.UTF8))
             {
@@ -150,17 +151,15 @@ namespace TodoApp.Controllers
                 while ((line = reader.ReadLine()) != null)
                 {
                     string[] todoData = line.Split(':');
-                    if (todoData.Length >= 2 && todoData[0] == username && todoData[1] == searchTerm)
+                    if (todoData.Length >= 2 && todoData[0] == username)
                     {
-                        ViewBag.SearchResult = "Todo exists.";
-                        return View("AddTodo", GetTodos(username));
+                        string todo = string.Join(":", todoData.Skip(1));
+                        todos.Add(todo);
                     }
                 }
             }
 
-            ViewBag.SearchResult = "Todo does not exist.";
-            return View("AddTodo", GetTodos(username));
+            return todos;
         }
-
     }
 }

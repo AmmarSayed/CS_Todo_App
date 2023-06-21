@@ -18,7 +18,14 @@
     <button type="submit">Search</button>
 </form>
 
-<h3>My Todos</h3>
+
+<hr />
+
+<form method="post" action="/User/ClearTodos">
+    <button type="submit">Clear All Todos</button>
+</form>
+
+<h2>My Todos</h2>
 
 @if (Model != null && Model.Count > 0)
 {
@@ -31,9 +38,3 @@ else
 {
     <p>No todos found.</p>
 }
-
-<hr />
-
-<form method="post" action="/User/ClearTodos">
-    <button type="submit">Clear All Todos</button>
-</form>
