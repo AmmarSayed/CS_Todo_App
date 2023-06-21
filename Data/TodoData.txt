@@ -1,5 +1,2 @@
-﻿ammar:Hello
+﻿ammar:ss
 ammar:test
-ammar:ass
-ammar:Hello
-ammar:next

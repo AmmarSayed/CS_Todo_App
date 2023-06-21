@@ -70,6 +70,7 @@ namespace TodoApp.Controllers
         [HttpPost]
         public IActionResult SearchTodo(string searchTerm)
         {
+            /*
             string username = HttpContext.Session.GetString("Username");
             if (string.IsNullOrEmpty(username))
             {
@@ -88,6 +89,27 @@ namespace TodoApp.Controllers
             }
 
             List<string> todos = GetTodos(username);
+            return View("AddTodo", todos);
+            */
+            string username = HttpContext.Session.GetString("Username");
+            if (string.IsNullOrEmpty(username))
+            {
+                return RedirectToAction("Login");
+            }
+
+            List<string> todos = GetTodos(username);
+
+            bool todoExists = todos.Any(todo => todo == searchTerm);
+
+            if (todoExists)
+            {
+                ViewBag.SearchResult = "Todo exists.";
+            }
+            else
+            {
+                ViewBag.SearchResult = "Todo does not exist.";
+            }
+
             return View("AddTodo", todos);
         }
 
